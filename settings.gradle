@@ -1,0 +1,6 @@
+rootProject.name = 'Multimodule'
+
+include 'app'
+include 'teachers'
+include 'students'
+
