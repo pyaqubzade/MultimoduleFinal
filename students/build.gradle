@@ -22,7 +22,11 @@ dependencies {
 
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
+    // crypto
+    implementation 'com.nimbusds:nimbus-jose-jwt:9.0'
+    implementation 'com.nimbusds:srp6a:2.1.0'
 
+    implementation('commons-codec:commons-codec:1.11')
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 

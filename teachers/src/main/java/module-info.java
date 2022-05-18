@@ -4,7 +4,7 @@ module teacher {
     requires spring.web;
 
     exports az.chaypay.teacher to app;
-    exports az.chaypay.teacher.api to student;
+    exports az.chaypay.teacher.api to app, student;
     exports az.chaypay.teacher.controller to spring.beans;
     exports az.chaypay.teacher.service.impl to spring.beans;
 
