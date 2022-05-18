@@ -1,16 +1,5 @@
 spring:
   application:
     name: demo
-  datasource:
-    url: jdbc:postgresql://localhost:5433/auth
-    username: innotest
-    password: innotest13
-  jpa:
-    hibernate:
-      ddl-auto: update
 server:
   port: 7676
-
-dependency: >
-  com.example.multimodule,
-  com.example.student
