@@ -8,11 +8,14 @@ import lombok.Setter;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.math.BigInteger;
+import java.util.List;
 import java.util.Random;
+import java.util.stream.Collectors;
 
 @Getter
 @Setter
@@ -29,11 +32,12 @@ public class Controller {
     private final SRP6Helper srp6Helper;
 
     @GetMapping("/create")
-    ResponseEntity<Response> createUserPassword(
-            @RequestParam String username,
-            @RequestParam String password
+    ResponseEntity<List<Response>> createUserPassword(
+            @RequestBody List<Request> requests
     ) {
-        return ResponseEntity.ok(createSaltAndVerifier(username, password));
+        var res = requests.stream().map(request -> createSaltAndVerifier(request.getUsername(), request.getPassword()))
+                .collect(Collectors.toList());
+        return ResponseEntity.ok(res);
     }
 
     @GetMapping("/getStep2")
